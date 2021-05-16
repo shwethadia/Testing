@@ -6,8 +6,23 @@ import (
 	"github.com/shwethadia/Testing/src/api/utils/errors"
 )
 
+type locationService struct{}
 
-func GetCountry(countryId string) (*locations.Country, *errors.ApiError){
+type locationServiceInterface interface{
+
+	GetCountry(countryId string) (*locations.Country, *errors.ApiError)
+}
+
+var (
+	LocationService locationServiceInterface
+)
+
+func init(){
+
+	LocationService = &locationService{}
+
+}
+func (s *locationService)GetCountry(countryId string) (*locations.Country, *errors.ApiError){
 
 	return locations_provider.GetCountry(countryId)
 }

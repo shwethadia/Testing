@@ -1,0 +1,10 @@
+Possible Scenarios that we have when dealing with any external API
+
+
+1) timeout
+2) not found
+3) Invalid Error Interface
+4) error from API
+5) Valid Response
+        INVALID JSON RESPONSE
+        VALID JSON RESPONSE NO ERROR

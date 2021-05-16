@@ -92,7 +92,14 @@ func TestGetCountryInvalidJSONResponse(t *testing.T){
 
 func TestGetCoutnryNoError(t *testing.T){
 
+
 	rest.FlushMockups()
+	rest.AddMockups(&rest.Mock{
+		URL : "https://api.mercadolibre.com/countries/AR",
+		HTTPMethod: http.MethodGet,
+		RespHTTPCode: http.StatusOK,
+		RespBody : `{"id":123,"name":"Argentina","time_zone":"GMT-03:00"}`,
+	})
 	country, err := GetCountry("AR")
 	assert.Nil(t,err)
 	assert.NotNil(t,country)
